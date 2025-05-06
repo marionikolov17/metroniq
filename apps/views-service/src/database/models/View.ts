@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const viewSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
   viewer: {
     type: String,
     required: true,

@@ -1,10 +1,19 @@
-import express from 'express';
+import express, { Express } from 'express';
 import { env } from './env';
+import { createServerApp } from './app';
 
-const app: express.Application = express();
+const startServer = () => {
+  const app: Express = express();
 
-const PORT: string = env.PORT;
+  // Connect to database
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+  createServerApp(app);
+
+  const PORT: string = env.PORT;
+
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+};
+
+startServer();

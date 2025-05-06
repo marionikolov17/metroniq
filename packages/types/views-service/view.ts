@@ -2,6 +2,7 @@ import { z } from "zod";
 import { Document } from "mongoose";
 
 export const viewSchema = z.object({
+  userId: z.string(),
   viewer: z.string(),
   time: z.number(),
   viewerCountry: z.string(),
