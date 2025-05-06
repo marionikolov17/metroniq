@@ -1,11 +1,12 @@
 import express, { Express } from 'express';
 import { env } from './env';
 import { createServerApp } from './app';
+import { connectToDatabase } from './database/connection';
 
-const startServer = () => {
+const startServer = async () => {
   const app: Express = express();
 
-  // Connect to database
+  await connectToDatabase();
 
   createServerApp(app);
 
