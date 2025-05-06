@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
 export const tryCatch = (
   method: (req: any, res: Response) => Promise<void>,

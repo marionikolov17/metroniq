@@ -15,7 +15,7 @@ class CustomError extends Error {
   }
 
   static InternalServerError() {
-    return new CustomError('Internal Server Error', 500);
+    return new CustomError("Internal Server Error", 500);
   }
 
   static Unauthorized(message: string) {

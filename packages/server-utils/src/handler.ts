@@ -1,23 +1,23 @@
-import { MongooseError } from 'mongoose';
-import CustomError from './error';
+import { MongooseError } from "mongoose";
+import CustomError from "./error";
 
 export const handler = (method: (...args: any[]) => Promise<any>) => {
   return async (...args: any[]) => {
     try {
       return await method(...args);
     } catch (error: unknown) {
-      console.error('Service error:', error);
+      console.error("Service error:", error);
 
       if (error instanceof Error) {
-        if (error.name === 'ValidationError') {
+        if (error.name === "ValidationError") {
           const validationError = error as any;
           const messages = Object.values(validationError.errors).map(
             (err: any) => err.message,
           );
-          throw CustomError.BadRequest(messages.join(', '));
+          throw CustomError.BadRequest(messages.join(", "));
         }
 
-        if (error.name === 'CastError') {
+        if (error.name === "CastError") {
           const castError = error as any;
           throw CustomError.BadRequest(
             `Invalid ${castError.path}: ${castError.value}`,
@@ -25,7 +25,7 @@ export const handler = (method: (...args: any[]) => Promise<any>) => {
         }
 
         if (error instanceof MongooseError && (error as any).code === 11000) {
-          throw CustomError.BadRequest('Duplicate entry found');
+          throw CustomError.BadRequest("Duplicate entry found");
         }
 
         if (error instanceof MongooseError) {

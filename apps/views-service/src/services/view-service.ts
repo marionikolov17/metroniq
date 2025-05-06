@@ -1,6 +1,6 @@
 import { View } from '@repo/types';
 import ViewRepository from '../database/repository/view-repository';
-import { handler } from '../utils/service-handler';
+import { handler } from '@repo/server-utils';
 
 class ViewService {
   private repository: ViewRepository;

@@ -1,6 +1,6 @@
 import { Express } from 'express';
 import ViewService from '../services/view-service';
-import { tryCatch } from '../utils/tryCatch';
+import { tryCatch } from '@repo/server-utils';
 
 export const view = (app: Express) => {
   const service = new ViewService();
