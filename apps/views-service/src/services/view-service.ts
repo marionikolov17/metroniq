@@ -10,15 +10,20 @@ class ViewService {
   }
 
   async CreateView(view: View) {
-    return handler(async () => this.repository.createView(view));
+    const createViewHandler = handler(() => this.repository.createView(view));
+    return createViewHandler();
   }
 
   async FetchViews(query: any) {
-    return handler(async () => this.repository.getViews(query));
+    const fetchViewsHandler = handler(() => this.repository.getViews(query));
+    return fetchViewsHandler();
   }
 
   async UpdateView(id: string, view: View) {
-    return handler(async () => this.repository.updateView(id, view));
+    const updateViewHandler = handler(() =>
+      this.repository.updateView(id, view),
+    );
+    return updateViewHandler();
   }
 }
 
