@@ -5,7 +5,7 @@
     "scripts": {
         "build": "tsc",
         "start": "node dist/index.js",
-        "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
+        "dev": "dotenv -e .env.local -- cross-var nodemon --exec ts-node src/index.ts",
         "lint": "eslint 'src/**/*.ts'",
         "format": "prettier --write 'src/**/*.ts'"
     },
@@ -14,12 +14,15 @@
     "license": "ISC",
     "description": "",
     "dependencies": {
+        "cross-var": "^1.1.0",
         "dotenv": "^16.5.0",
-        "express": "^5.1.0"
+        "express": "^5.1.0",
+        "zod": "^3.24.4"
     },
     "devDependencies": {
         "@types/express": "^5.0.1",
         "@types/node": "^22.15.13",
+        "dotenv-cli": "^7.3.0",
         "eslint": "^9.26.0",
         "nodemon": "^3.1.10",
         "prettier": "^3.5.3",
