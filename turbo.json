@@ -33,6 +33,11 @@
             "dependsOn": [
                 "^format"
             ]
+        },
+        "compose": {
+            "dependsOn": [
+                "^compose"
+            ]
         }
     }
 }

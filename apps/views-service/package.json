@@ -7,7 +7,8 @@
         "start": "node dist/index.js",
         "dev": "dotenv -e .env.local -- cross-var nodemon --exec ts-node src/index.ts",
         "lint": "eslint 'src/**/*.ts'",
-        "format": "prettier --write 'src/**/*.ts'"
+        "format": "prettier --write 'src/**/*.ts'",
+        "compose": "docker-compose up"
     },
     "keywords": [],
     "author": "",
