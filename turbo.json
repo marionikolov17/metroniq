@@ -1,6 +1,10 @@
 {
     "$schema": "https://turborepo.com/schema.json",
     "ui": "tui",
+    "globalEnv": [
+        "JWT_SECRET",
+        "JWT_TOKEN_EXPIRY"
+    ],
     "tasks": {
         "build": {
             "dependsOn": [
@@ -16,8 +20,7 @@
             ],
             "env": [
                 "JWT_SECRET",
-                "JWT_TOKEN_EXPIRY",
-                "NODE_ENV"
+                "JWT_TOKEN_EXPIRY"
             ]
         },
         "lint": {
@@ -35,8 +38,7 @@
             "persistent": true,
             "env": [
                 "JWT_SECRET",
-                "JWT_TOKEN_EXPIRY",
-                "NODE_ENV"
+                "JWT_TOKEN_EXPIRY"
             ]
         },
         "format": {
