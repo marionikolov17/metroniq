@@ -6,6 +6,7 @@ export const notificationSchema = z.object({
   actorIp: z.string(),
   actorCountry: z.string(),
   message: z.string(),
+  isRead: z.boolean(),
   metadata: z.record(z.any()),
   createdAt: z.date(),
   updatedAt: z.date(),

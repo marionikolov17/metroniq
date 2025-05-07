@@ -17,6 +17,10 @@ const notificationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isRead: {
+    type: Boolean,
+    default: false,
+  },
   metadata: {
     type: Object,
     default: {},
