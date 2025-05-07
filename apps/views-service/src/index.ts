@@ -13,7 +13,7 @@ const startServer = async () => {
   const PORT: string = env.PORT;
 
   app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Views service is running on port ${PORT}`);
   });
 };
 
