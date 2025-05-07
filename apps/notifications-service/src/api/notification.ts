@@ -17,10 +17,7 @@ export const notification = (app: Express) => {
   app.get(
     '/notifications',
     tryCatch(async (req, res) => {
-      const notifications = await service.getNotifications(
-        req.query.userId,
-        req.query,
-      );
+      const notifications = await service.getNotifications(req.query.userId);
       res.status(200).json(notifications);
     }),
   );

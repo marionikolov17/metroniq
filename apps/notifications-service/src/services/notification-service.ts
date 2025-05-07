@@ -16,9 +16,9 @@ class NotificationService {
     return createNotificationHandler();
   }
 
-  async getNotifications(userId: string, query: any) {
+  async getNotifications(userId: string) {
     const getNotificationsHandler = handler(() =>
-      this.notificationRepository.getNotifications({ userId, ...query }),
+      this.notificationRepository.getNotifications({ userId }),
     );
     return getNotificationsHandler();
   }
