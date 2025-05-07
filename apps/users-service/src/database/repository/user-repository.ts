@@ -22,8 +22,8 @@ class UserRepository {
     return user;
   }
 
-  async getUser(query: any) {
-    const user = await this.userModel.findOne(query);
+  async getUser(query: any, excluded?: any) {
+    const user = await this.userModel.findOne(query, excluded);
     return user;
   }
 

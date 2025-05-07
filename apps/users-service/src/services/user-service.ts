@@ -59,6 +59,19 @@ class UserService {
 
     return loginHandler();
   }
+
+  async getUser(userId: string) {
+    const getUserHandler = handler(async () => {
+      const user = await this.userRepository.getUser(
+        { _id: userId },
+        { password: 0 },
+      );
+
+      return user;
+    });
+
+    return getUserHandler();
+  }
 }
 
 export default UserService;
