@@ -13,6 +13,11 @@
             "outputs": [
                 ".next/**",
                 "!.next/cache/**"
+            ],
+            "env": [
+                "JWT_SECRET",
+                "JWT_TOKEN_EXPIRY",
+                "NODE_ENV"
             ]
         },
         "lint": {
@@ -27,7 +32,12 @@
         },
         "dev": {
             "cache": false,
-            "persistent": true
+            "persistent": true,
+            "env": [
+                "JWT_SECRET",
+                "JWT_TOKEN_EXPIRY",
+                "NODE_ENV"
+            ]
         },
         "format": {
             "dependsOn": [

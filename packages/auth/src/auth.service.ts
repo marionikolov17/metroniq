@@ -3,19 +3,14 @@ import { authConfig } from "./config/auth.config";
 
 export class AuthService {
   private readonly JWT_SECRET = authConfig.jwtSecret || "secret";
-  private readonly ACCESS_TOKEN_EXPIRY = authConfig.accessTokenExpiry || "15m";
-  private readonly REFRESH_TOKEN_EXPIRY = authConfig.refreshTokenExpiry || "7d";
+  private readonly TOKEN_EXPIRY = authConfig.tokenExpiry || "15m";
 
   async generateTokens(userId: string) {
-    const accessToken = jwt.sign({ userId }, this.JWT_SECRET, {
-      expiresIn: this.ACCESS_TOKEN_EXPIRY as jwt.SignOptions["expiresIn"],
+    const token = jwt.sign({ userId }, this.JWT_SECRET, {
+      expiresIn: this.TOKEN_EXPIRY as jwt.SignOptions["expiresIn"],
     });
 
-    const refreshToken = jwt.sign({ userId }, this.JWT_SECRET, {
-      expiresIn: this.REFRESH_TOKEN_EXPIRY as jwt.SignOptions["expiresIn"],
-    });
-
-    return { accessToken, refreshToken };
+    return token;
   }
 
   async validateToken(token: string) {

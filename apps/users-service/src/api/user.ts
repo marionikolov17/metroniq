@@ -1,11 +1,11 @@
 import { Express } from 'express';
 import { tryCatch } from '@repo/server-utils';
-import { authenticateToken } from '@repo/auth';
+import { authenticateToken, AuthService, isAuthenticated } from '@repo/auth';
 import UserService from '../services/user-service';
-import { isAuthenticated } from './middleware/auth-middleware';
 
 export const user = (app: Express) => {
   const userService = new UserService();
+  const authService = new AuthService();
 
   app.post(
     '/register',
@@ -21,7 +21,9 @@ export const user = (app: Express) => {
         password,
         profileImage,
       });
-      res.status(201).json(user);
+
+      const token = await authService.generateTokens(user.id);
+      res.status(201).json({ user, token });
     }),
   );
 
@@ -31,7 +33,9 @@ export const user = (app: Express) => {
       const { identifier, password } = req.body;
 
       const user = await userService.login(identifier, password);
-      res.status(200).json(user);
+
+      const token = await authService.generateTokens(user.id);
+      res.status(200).json({ user, token });
     }),
   );
 

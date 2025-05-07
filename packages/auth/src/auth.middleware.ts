@@ -24,3 +24,18 @@ export const authenticateToken = (
     next();
   }
 };
+
+export const isAuthenticated = (
+  req: Request | any,
+  res: Response,
+  next: NextFunction,
+) => {
+  const user = req.user;
+
+  if (!user) {
+    res.status(401).json({ message: "Unauthorized" });
+    return;
+  }
+
+  next();
+};
