@@ -22,7 +22,7 @@ export const user = (app: Express) => {
         profileImage,
       });
 
-      const token = await authService.generateTokens(user.id);
+      const token = await authService.generateToken(user.id);
       res.status(201).json({ user, token });
     }),
   );
@@ -34,7 +34,7 @@ export const user = (app: Express) => {
 
       const user = await userService.login(identifier, password);
 
-      const token = await authService.generateTokens(user.id);
+      const token = await authService.generateToken(user.id);
       res.status(200).json({ user, token });
     }),
   );

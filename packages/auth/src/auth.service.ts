@@ -5,7 +5,7 @@ export class AuthService {
   private readonly JWT_SECRET = authConfig.jwtSecret || "secret";
   private readonly TOKEN_EXPIRY = authConfig.tokenExpiry || "15m";
 
-  async generateTokens(userId: string) {
+  async generateToken(userId: string) {
     const token = jwt.sign({ userId }, this.JWT_SECRET, {
       expiresIn: this.TOKEN_EXPIRY as jwt.SignOptions["expiresIn"],
     });
