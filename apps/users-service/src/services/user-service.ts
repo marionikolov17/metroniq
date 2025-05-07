@@ -19,7 +19,15 @@ class UserService {
       }
 
       const newUser = await this.userRepository.createUser(user);
-      return newUser;
+
+      return {
+        id: newUser._id,
+        email: newUser.email,
+        username: newUser.username,
+        profileImage: newUser.profileImage,
+        createdAt: newUser.createdAt,
+        updatedAt: newUser.updatedAt,
+      };
     });
 
     return registerHandler();
@@ -39,7 +47,14 @@ class UserService {
         throw new Error('Incorrect email/username or password');
       }
 
-      return user;
+      return {
+        id: user._id,
+        email: user.email,
+        username: user.username,
+        profileImage: user.profileImage,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+      };
     });
 
     return loginHandler();

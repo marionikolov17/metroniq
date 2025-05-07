@@ -18,7 +18,7 @@ class UserRepository {
       $or: [{ email: identifier }, { username: identifier }],
     };
 
-    const user = await this.userModel.findOne(query);
+    const user = await this.getUser(query);
     return user;
   }
 
